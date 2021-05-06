@@ -1,0 +1,51 @@
+#akcja searching return path{
+	*wyznacz prostą zawierającą intruza oraz drona
+	punktDocelowy=wyznacz punkt na przecięciu prostej i kręgu docelowego
+	*wyznacz trase do punktktDocelowy za pomocą A*
+
+
+	#kontrola przeszkód
+	foreach punkt in listaPunktówNaŚcieżce
+	{
+		if(przeszkody mają punkt w zasięgu)
+		{
+			czasDoDrona=czas w jakim dron osiągnie punkt
+			czasDoPrzeszkodyL=czas, w którym lewa ręka osiąga punkt
+			czasDoPrzeszkodyP=czas, w którym prawa ręka osiąga punkt
+
+			czy_istnieje_trasa=Tru
+
+			if(czasDoDrona-czasDoPrzeszkodyL<0 AND czasDoDrona-czasDoPrzeszkodyP<0)
+			{
+				czy_istnieje_trasa=False
+			}
+			if(czasDoDrona-czasDoPrzeszkodyL<0)
+			{
+				
+				*przesuń punkt używając funkcji redukcjaRóżnicyCzasowej(patrz plik redukcjaRóżnicyCzasowej) przeszkoda to lewa ręka
+
+				if(czasDoDrona-czasDoPrzeszkodyP<0)
+				{
+					czy_istnieje_trasa=False
+				}
+			}
+			if(czasDoDrona-czasDoPrzeszkodyP<0)
+			{
+				
+				*przesuń punkt używając funkcji redukcjaRóżnicyCzasowej(patrz plik redukcjaRóżnicyCzasowej) przeszkoda to prawa ręka
+				if(czasDoDrona-czasDoPrzeszkodyL<0)
+				{
+					czy_istnieje_trasa=False
+				}
+			}
+		}
+	}
+	if(czy_istnieje_trasa==False)
+	{
+		return pustaLista
+	}
+
+	return listaPunktowNaTrasie
+
+
+}

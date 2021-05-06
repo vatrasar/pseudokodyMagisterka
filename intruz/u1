@@ -1,0 +1,41 @@
+#Obsługa zdarzenia rx1 (31/41)
+{
+	*umieść rx na pozycji (x,y)
+	if(wiecej niz jeden dron atakuje)
+	{
+		*wybierz drona, który nie jest atakowany przez drugą rękę
+		*wyznacz współrzędne polarne drona
+		*wyznacz współrzędne polarne dla ręki(ten sam kąt co dron i r=min(max_zasięg_ręki,odległośćDronaOdIntruza)
+		x_dev=losuj liczbę z przedziału (0,max_niedokładność_intruza)
+		y_dev=losuj liczbę z przedziału (0,max_niedokładność_intruza)
+		*przekonwertuj współrzędne na kartezjańskie x_r, y_r
+		współrzędne_docelowe=(x_r+x_dev,y_r+y_dev)
+		zdarzenie U1: forward+- ->TZdarzeń
+	}else if(jeden dron atakuje)
+	{
+		*wyznacz współrzędne polarne drona
+		*wyznacz współrzędne polarne dla ręki(ten sam kąt co dron i r=min(max_zasięg_ręki,odległośćDronaOdIntruza)
+		x_dev=losuj liczbę z przedziału (0,max_niedokładność_intruza)
+		y_dev=losuj liczbę z przedziału (0,max_niedokładność_intruza)
+		*przekonwertuj współrzędne na kartezjańskie x_r, y_r
+		współrzędne_docelowe=(x_r+x_dev,y_r+y_dev)
+		zdarzenie U1: forward+- ->TZdarzeń
+	}
+	else if(na pierwszym kręgu jest dron nie atakowany przez drugą rękę)
+	{
+		*wybierz drona, który nie jest atakowany przez drugą rękę
+		*wyznacz współrzędne polarne drona
+		*wyznacz współrzędne polarne dla ręki(ten sam kąt co dron i r=min(max_zasięg_ręki,odległośćDronaOdIntruza)
+		x_dev=losuj liczbę z przedziału (0,max_niedokładność_intruza)
+		y_dev=losuj liczbę z przedziału (0,max_niedokładność_intruza)
+		*przekonwertuj współrzędne na kartezjańskie x_r, y_r
+		współrzędne_docelowe=(x_r+x_dev,y_r+y_dev)
+		zdarzenie U1: forward+- ->TZdarzeń
+
+	}else
+	{
+		zdarzenie U2: back ->TZdarzeń
+
+	}
+
+}

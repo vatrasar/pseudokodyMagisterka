@@ -1,0 +1,20 @@
+#redukcjaRóżnicyCzasowej
+{	
+
+	czasDoDrona=czas w jakim dron osiągnie punkt
+	czasDoPrzeszkody=czas, w którym przeszkoda osiąga punkt
+	alfa,odległość=wyznacz współrzędne polarne punktu wzgledem intruza
+	for(i=0;i<360;i++)
+	{
+		
+		*zmień kont alfa o jeden stopień(tak by oddalić się od przeszkody)
+		czasDoDrona=czas w jakim dron osiągnie punkt
+		czasDoPrzeszkody=czas, w którym przeszkoda osiąga punkt
+		czasDoDrona=czas w jakim dron osiągnie nowy punkt
+		czasDoPrzeszkody=czas, w którym przeszkoda osiąga nowy punkt
+		if(czasDoDrona-czasDoPrzeszkody>0)
+		{	
+			return nowy punkt
+		}
+	}
+}

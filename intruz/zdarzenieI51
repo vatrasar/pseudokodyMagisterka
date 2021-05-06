@@ -1,0 +1,6 @@
+#obsługa zdarzenia I51
+{
+	*obróć intruza o kąt alfa
+	*wylosuj kąt, o który ma byc wykonany nowy obrót. wybór z 4 opcji: [-180, 180,-90,90] 
+	zdarzenie I51: turn+/- 90/180 ->TZdarzeń
+}

@@ -1,0 +1,42 @@
+#obsługa zdarzenia dx5(15/25)
+{
+	*umieść dx w nowej pozycji (x,y)
+
+	**etykietaGoTo: 1 
+	*akcja: Check Environment
+	*akcja: Searching return path
+
+
+	if(sytuacja_alarmowa==False)
+	{
+		if(znaleziono bezpieczną trase do powrotną)
+		{
+			akcja: Attack_back
+			zdarzenia: dx5, dxAReturn->TZdarzeń
+		}
+		else
+		{	
+			akcja: S.O.S
+			zdarzenie dx5: dxReturn -> TZdarzeń
+			return
+		}
+
+
+	}
+	else{
+
+		akcja: S.O.S
+		akcja: search_return_path
+		if(return_path found)
+		{
+		 akcja: Attack_back
+		 zdarzenia: dx5, dxAReturn->TZdarzeń
+		}else{
+			goto: 1
+		}
+
+	}
+
+
+	
+}

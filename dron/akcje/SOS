@@ -1,0 +1,27 @@
+#akcja SOS
+{
+	#poniższe czynności są wykonywane dla drugiego drona(a nie tego, który wywołał SOS)
+
+	*dyskretyzacja przestrzeni z zadaną rozdzielczością
+	cel=wybierz najbliższą strefe punktową intruza
+	*szukaj trasy do punkt za pomocą algorytmu A*
+	#dostosowanie trasy do nadchodzących przeszkód
+	foreach punkt in listaPunktówNaŚcieżce
+	{
+		czasDoDrona=czas w jakim dron osiągnie punkt
+		czasDoPrzeszkodyL=czas, w którym lewa ręka osiąga punkt
+		czasDoPrzeszkodyP=czas, w którym prawa ręka osiąga punkt
+
+		if(czasDoDrona-czasDoPrzeszkodyL<0 OR czasDoDrona-czasDoPrzeszkodyP<0)
+		{
+			*usuń punkt oraz punkty, które są za nim z listaPunktówNaŚcieżce
+			goto: 1
+		}
+	
+		
+	}
+	
+	**etykietaGoTo: 1 
+	return listaPunktówNaŚcieżce
+	
+}

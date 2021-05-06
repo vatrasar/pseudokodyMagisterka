@@ -1,0 +1,7 @@
+#akcja check environment{
+
+	delayL=sprawdź za ile czasu do pozycji drona dotrze lewa ręka
+	delayP=sprawdź za ile czasu do pozycji drona dotrze prawa ręka
+	#doprecyzować kiedy występuje sytuacja alarmowa
+	
+}

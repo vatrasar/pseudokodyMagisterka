@@ -1,0 +1,33 @@
+#obsługa zdarzenia Dx3(13/23)
+{
+	*umieść dx w pozycji (x,y)
+	
+	**etykietaGoTo: 1 
+	*akcja: Check Environment
+	*akcja: Search Path
+	if(sytuacja_alarmowa==True)
+	{
+		akcja: S.O.S
+		akcja: search_return_path
+		if(return_path found)
+		{
+		 akcja: Attack_back
+		 zdarzenia: dx5, dxAReturn->TZdarzeń
+		}else{
+			goto: 1
+		}
+	}
+	else{
+		if(min(delayL, delayR)>requested_time)
+		{
+			akcja: Attack
+			zdarzenie dx4: dxAttack -> TZdarzeń
+		}
+		else
+		{
+			*wylosój nową pozycje na aktualnym kręgu
+			zdarzenie dx3: dxMove+- ->TZdarzeń
+		}
+
+	}
+}

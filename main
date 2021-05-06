@@ -1,0 +1,26 @@
+#główna pętla main
+{
+	*inicjalizacja tablicy zdarzen T. Pierwszy zdarzenia to dx1 oraz I51
+	*inicjalizacja pozycji wszystkich elemntów(pozycje startowe wczytywane z pliku)
+	time_current=0
+	while(time_current<max_time_symulacji)
+	{
+		*search min w Tablica Zdarzeń
+		*aktualizuj time_current zgodnie z czasem z zdarzenia min
+		*aktualizuj pozycje wszystkich elementów
+		*sprawdz czy któryś z dronów zderzył się z innym obiektem
+		if(doszło do zniszeczenia drona)
+		{
+			break
+		}
+		foreach dron in listaDronów
+		{
+			if(dron jest na pozycji dającej punkty)
+			{
+				*dodja punkty dronowi
+			}
+		}
+		*dokonaj obsługi zdarzenia min
+	}
+
+}

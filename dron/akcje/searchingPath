@@ -1,0 +1,36 @@
+#akcja Searching Path{
+	
+	*dyskretyzacja przestrzeni z zadaną rozdzielczością
+	
+	inicjalizacja listaPunktówNaSciezce
+
+	#wybór punktu, do którego lecimy
+	foreach punkt in listaStrefPunktowychIntruza
+	{
+		*szukaj trasy do punkt za pomocą algorytmu A*
+		
+		czy_istnieje_trasa=True
+
+		if(znaleziono trase)
+		{	
+			#dostosowanie trasy do nadchodzących przeszkód
+			czy_istnieje_trasa=kontrole przeszkód(patrz plik kontrolaPrzeszkód)
+			if(czy_istnieje_trasa==False)
+			{
+				listaPunktówNaSciezce=pusta lista
+			}
+			else{
+
+				goto: 1
+
+			}
+		}
+	
+	}
+
+	**etykietaGoTo: 1 
+	
+	return listaPunktówNaSciezce
+
+
+}

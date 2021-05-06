@@ -1,0 +1,24 @@
+#kontrolaPrzeszkód{
+	
+	foreach punkt in listaPunktówNaŚcieżce
+	{
+		czasDoDrona=czas w jakim dron osiągnie punkt
+		czasDoPrzeszkodyL=czas, w którym lewa ręka osiąga punkt
+		czasDoPrzeszkodyP=czas, w którym prawa ręka osiąga punkt
+
+		czy_istnieje_trasa=True
+		if(czasDoDrona-czasDoPrzeszkodyL<0 OR czasDoDrona-czasDoPrzeszkodyP<0)
+		{
+			czy_istnieje_trasa=False
+		}
+		if(czy_istnieje_trasa==False and stan_SOS)
+		{
+			*usuń punkt oraz punkty, które są za nim z listaPunktówNaŚcieżce
+			czy_istnieje_trasa=True
+
+		}
+
+		
+	}
+	return czy_istnieje_trasa
+}
