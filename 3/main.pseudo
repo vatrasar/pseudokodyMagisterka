@@ -1,0 +1,106 @@
+main{
+    t_curr=0
+    curr_side=A
+    if(GUI:UAV1)
+    {
+        UAV1_curr_position=tier2
+        lista_aktywnych_uav.append(UAV1)
+    }
+    if(GUI:UAV2)
+    {
+        UAV2_curr_position=tier2 
+        lista_aktywnych_uav.append(UAV2)
+    }
+    if (lista_aktywnych_uav.size()==0)
+    {
+    
+        print("STOP")
+        STOP
+    }
+
+    if (GUI:Lh)
+    {
+        Lh_curr_position=tier0
+        Rh_curr_position=tier0
+    }
+    if(Gui:Rh)
+    {
+        Rh_curr_position=tier0
+    }
+
+
+    total_num_of_attacks1=0
+    total_num_of_attacks2=0
+    total_score_1=0
+    total_score_2=0
+    dt_windows_beat_score_a=0
+    dt_window_beat_score_B=0
+    total_energy_cost=0
+    Tab_zadarzen[1..1_be_zdarzen]=Inf
+
+    if(GUI:UAV1)
+    {
+        planowanie_zdarzen MOVE_ALONG_1()
+    }
+
+    if(GUI:UAV2)
+    {
+        planowanie_zdarzen MOVE_ALONG_2()
+    }
+    if(start & vizualization )
+    {
+        planowanie_zdarzenia vizualization
+    }
+
+    1:   //etykieta goto
+    t_curr=MINIMUM(TabZdarzen,t_min,typ_zdarzenia) //co to jest t_min? czy typ zdarzenia nie powinnien być zwracany
+    if(t_curr>T)
+    {
+        zapisz statystyki
+        STOP
+    }
+
+
+
+
+    if(typ_zdarzenia=M_A_1)
+    {
+        obsluga zdarenia MOVE_ALONG_1
+    }
+    if(typ_zdarzenia=M_A_2)
+    {
+        obsluga zdarenia MOVE_ALONG_2
+
+    }
+    if(typ_zdarzenia=M_Attack_1)
+    {
+        obsluga zdarenia Move_attack_1
+    }
+    if(typ_zdarzenia=M_Attack_2)
+    {
+        obsluga zdarenia Move_attack_2
+
+    }
+    if(typ_zdarzenia=M_Lh)
+    {
+        obsluga zdarenia Move_Lh
+
+    }
+    if(typ_zdarzenia=M_Rh)
+    {
+        obsluga zdarenia Move_Rh
+
+    }
+    if(typ_zdarzenia=Turn_A-B)
+    {
+        obsluga zdarenia Turn_A-B
+
+    }
+    if(typ_zdarzenia=DISPLAY)
+    {
+        obsluga zdarenia vizualization
+    }
+    goto 1
+    
+
+}

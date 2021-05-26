@@ -12,7 +12,7 @@
 		czasDoPrzeszkody=czas, w którym przeszkoda osiąga punkt
 		czasDoDrona=czas w jakim dron osiągnie nowy punkt
 		czasDoPrzeszkody=czas, w którym przeszkoda osiąga nowy punkt
-		if(czasDoDrona-czasDoPrzeszkody>0)
+		if(czasDoDrona-czasDoPrzeszkody>requestedTime)
 		{	
 			return nowy punkt
 		}

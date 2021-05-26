@@ -12,7 +12,7 @@
 		czasDoPrzeszkodyL=czas, w którym lewa ręka osiąga punkt
 		czasDoPrzeszkodyP=czas, w którym prawa ręka osiąga punkt
 
-		if(czasDoDrona-czasDoPrzeszkodyL<0 OR czasDoDrona-czasDoPrzeszkodyP<0)
+		if(czasDoDrona-czasDoPrzeszkodyL<requestedTime OR czasDoDrona-czasDoPrzeszkodyP<requestedTime)
 		{
 			*usuń punkt oraz punkty, które są za nim z listaPunktówNaŚcieżce
 			goto: 1

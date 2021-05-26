@@ -4,3 +4,4 @@ prędkość ruchu
 max_niedokładność_intruza
 rozdzielczość dyskretyzacji przestrzeni
 max_zasięg_ręki
+requestedTime(wymagany margines czasowy między przybyciem do punktu drona a przybyciem ręki)

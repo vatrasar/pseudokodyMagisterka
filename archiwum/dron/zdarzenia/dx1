@@ -1,10 +1,13 @@
-#Obsługa zdarzenia dx4 (14/24)
+#obsługa zdarzenia x1(11/21)
 {
-	*umieść dx w nowej pozycji (x,y)
-
+	*umieść dx w pozycji (x,y)
+	*ustaw 1 krąg jako aktualny
+	
 	**etykietaGoTo: 1 
 	*akcja: Check Environment
 	*akcja: Search Path
+
+
 	if(sytuacja_alarmowa==True)
 	{
 		akcja: S.O.S
@@ -18,22 +21,25 @@
 		}
 	}
 	else{
-		if(znaleziono bezpieczną trase do celu)
+		
+		if(istnieje bezpieczna ścieżka do celu)
 		{
 			akcja: Attack
 			zdarzenie dx4: dxAttack -> TZdarzeń
 		}
 		else
 		{
-			akcja: search_return_path
-			akcja: Attack_back
-			zdarzenie dx5: dxReturn+- ->TZdarzeń
+			*wylosój nową pozycje na aktualnym kręgu
+			*stwórz ścieżke (na aktualnym okręgu) do nowej pozycji
+			*ustaw pierwszy punkt ze ścieżki jako aktualny cel
+			zdarzenie dx3: dxMove+- ->TZdarzeń
 		}
 
 	}
-	if(któraś z rąk jest w stanie spoczynku)
+
+	#U1(intruz)
+	if(jest ręka w spoczynku)
 	{
-		
 		*wyznacz współrzędne polarne drona
 		*wyznacz współrzędne polarne dla ręki(ten sam kąt co dron i r=min(max_zasięg_ręki,odległośćDronaOdIntruza)
 		x_dev=losuj liczbę z przedziału (0,max_niedokładność_intruza)
@@ -41,6 +47,7 @@
 		*przekonwertuj współrzędne na kartezjańskie x_r, y_r
 		współrzędne_docelowe=(x_r+x_dev,y_r+y_dev)
 		zdarzenie U1: forward+- ->TZdarzeń
-	
 	}
+	
+
 }

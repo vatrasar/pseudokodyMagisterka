@@ -1,0 +1,23 @@
+#obsługa zdarzenia Dx3(13/23)
+{
+	*umieść dx w pozycji (x,y)
+	
+
+	
+	*akcja: Search Path
+
+	if(istnieje bezpieczna ścieżka do celu)
+	{
+		akcja: Attack
+		zdarzenie dx4: dxAttack -> TZdarzeń
+	}
+	else
+	{
+		*wylosój nową pozycje na aktualnym kręgu
+		*stwórz ścieżke (na aktualnym okręgu) do nowej pozycji
+		*ustaw pierwszy punkt ze ścieżki jako aktualny cel
+		zdarzenie dx3: dxMove+- ->TZdarzeń
+	}
+
+	
+}
