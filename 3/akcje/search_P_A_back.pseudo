@@ -1,0 +1,22 @@
+search_P_A_back()
+{
+    calculate dt_Lh
+    calculate dt_Rh
+    calculate c1, c2,b1,b2
+    set grid points //dyskretyzacja?
+    FLOODING_ALGO_BACK(starting_points(x_goal,y_goal),set_of_points(path:num_of_grid,xL-destination_point,consumed_time))
+    SELECT_PATHS_B with consumed_time<min(dt_Lh,dt_Rh) & crash_free_Lx
+    SELECT_OPTIMAL_PATH_B(path_selected,Lx,path_found)
+    if(path_found)
+    {
+        path_exists=False
+        SELECT_TEMPORARY_PATH(temp_path,x_temp_goal,y_temp_goal,temp_path_found)
+        if (temp_path_found) {
+            temp_path_exist=True
+            
+        }
+        else {
+            temp_path_exist=False
+        }
+    }
+}

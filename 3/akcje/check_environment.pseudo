@@ -1,0 +1,11 @@
+check_environment()
+{
+    zagrozenie=False
+    wykonaj Search_P_A_Back()
+    if(path_exist=True)
+    {
+        zagrozenie=True
+    }
+    else
+        zagrozenie=False
+}

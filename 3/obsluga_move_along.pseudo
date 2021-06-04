@@ -1,0 +1,73 @@
+obsluga_move_along_1()
+{
+    set TZdarzen(M_A_1,Inf)
+    UAV1_curr_position=Store()
+    IN_BRAIN(planowanie Move_Lh, palnowanie Move_Rh, planowanie Turn A-B)
+    if( path_exist=True)
+    {
+        if(mode=RW-Ra)
+        {
+            x=random(0,1)
+            if(x<=prob_of_attack)
+            {
+                planowanie move_attack_1 //zaplanowanie osiągniecia celu ataku
+            }else{
+                x=random(0,1)
+                if(x<=prob_of_return_to_tier2)
+                {
+                   UAV1_curr_position=tier2
+                   planowanie zdarzenia Move_along_1 //powrótw 2T->1T
+                }else{
+                    planowanie Move_along_1 //przesuniecie do nowego punktu na 1T
+                }
+            }
+            goto 1
+
+        }
+        if (mode=Rw-Hill-CL) {
+            
+        }
+        if(mode=Coord-HILL-CL)
+        {
+
+        }
+        if(mode=Sa_Coord)
+        {
+
+        }
+        if(mode=La_of_goals)
+        {
+
+        }
+
+    }else{ //nie znaleziono drogi, atak nieopłacalny
+        if(mode=RW-Ra)
+        {
+      
+        }
+        if (mode=Rw-Hill-CL) {
+            
+        }
+        if(mode=Coord-HILL-CL)
+        {
+
+        }
+        if(mode=Sa_Coord)
+        {
+
+        }
+        if(mode=La_of_goals)
+        {
+
+        }
+
+    }//curr position!=tier1
+    if(UAV1_curr_position<tier1)
+    {
+        palnowanie move_along_1
+    }
+
+    1:
+
+
+}

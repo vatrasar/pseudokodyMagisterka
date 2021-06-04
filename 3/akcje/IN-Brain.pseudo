@@ -1,0 +1,64 @@
+IN_BRAIN(){
+
+    if (curr_situation=case1 || case5 || case9 || case 13)
+    {
+        DO_NOTHING;
+        GOTO 1
+    }
+    if((case2 & case10) || (case3 & case11) || (case4 & case12))
+    {
+        DO_NOTHING;
+        goto 1
+    }
+    if(curr_situation=(case2 & case14 &) || (case6 & case10) || (case3 & case15) || (case7 & case11))
+    {
+        if(GUI:Lh)
+        {
+            planowanie zdarzenia Move_alone_1
+        }
+        if(GUI:Rh)
+        {
+            planowanie zdarzenia Move_alone_2
+        }
+        goto 1
+    }
+    if(curr_situation=(case6 & case17) || (case7 & case15))//2Uav+jeden Lh/Rh
+    {
+        //i co tutaj?
+    }
+    if(curr_situation=(case4 & case16) || (case8 & case12))
+    {
+        if(mode_IN_BRAIN=S-R)
+        {
+            if(curr_side=A)
+            {
+                if(dt_window_beat_score_B>= beat_the_score)
+                {
+                    set TZdarzen(Move_Lh,Inf)
+                    Lh_curr_postion=tier0
+
+                    set TZdarzen(Move_Rh,Inf)
+                    Rh_curr_position=tier0
+
+                    planowanie zdarzenia Turn A-B
+                    goto 1
+                }
+                else
+                {
+                    planowanie zdarzenie Move_along1/2
+                }
+
+            }
+        }
+        if(mode IN_Brain=IN_B_L)
+        {
+            //...
+        }
+    }
+    if(curr_situation=case8 & case16)//2Uav+Lh+RH
+    {
+
+    }
+    1:
+}
+

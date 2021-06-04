@@ -1,0 +1,6 @@
+Move_attack_1()
+{
+    t_arrive_attack_1=curr_time+d_t_reg
+    Store(t_arrive_attack_1,x_goal,y_goal,score_goal)
+    set TZdarzen(M_Attack_1,t_arrive_attack_1)
+}
