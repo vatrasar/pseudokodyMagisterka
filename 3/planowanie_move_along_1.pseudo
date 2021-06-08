@@ -11,8 +11,14 @@ planowanie_move_along_1()
             else{
                 d_t_arrive=-(1/lambda1)*lnz
             }
-            xL=random(0,L_full)//losowa pozycja na tier1. L-full jest to długośc tier1
-            xL=correct(xL,UAV_mi)//sprawdza czy pozycja nie jest zajęta przez drugi uav
+            is_point_correct=False
+            while(is_correct){
+                xL=random(0,L_full)//losowa pozycja na tier1. L-full jest to długośc tier1
+                is_point_correct=correct(xL,UAV_mi)//sprawdza czy pozycja nie jest zajęta przez drugi uav
+                
+
+            }
+         
             t_arrive_M1=t_curr+d_t_arrive
             STORE(t_arrive_M1,xL,typ_zdarzenia)
             set TZdarz(typ_zdarzenia=M_A_1,t_arrive_M1)
@@ -29,6 +35,8 @@ planowanie_move_along_1()
             }
             xL=calculate(operation_mode)//co robi calculate
             xL=correct()
+
+            //tu chyba powinno byc dodanie zdarzenia do tablicy zdarzeń
         }
         goto 1
     }
@@ -76,7 +84,7 @@ planowanie_move_along_1()
 
 
     if (tier0<UAV1_curr_position<tier1 & path_exist=True) { // powrót z ataku na bezpieczny tier 1
-        xL=SELECT_OPTIMAL_PATH_B() //co robi ta metoda , gdzie jest pesudokod
+        xL=search_P_A_back() //co robi ta metoda , gdzie jest pesudokod
         xL=Correct()
         d_t_arrive=consumed_time(SELECTED_OPTIMAL_PATH_b)*v_of_UAV //co robio te metody, SElected, i consumed_time?
         t_arrive_M1=t_curr+dt_arrive 

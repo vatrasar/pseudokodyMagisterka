@@ -14,11 +14,11 @@ IN_BRAIN(){
     {
         if(GUI:Lh)
         {
-            planowanie zdarzenia Move_alone_1
+            planowanie zdarzenia Move_Lh
         }
         if(GUI:Rh)
         {
-            planowanie zdarzenia Move_alone_2
+            planowanie zdarzenia Move_Rh
         }
         goto 1
     }
