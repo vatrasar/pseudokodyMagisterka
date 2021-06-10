@@ -1,0 +1,93 @@
+
+wyslij_reke_do_drona(lista_dronow_do_obslugi)
+{
+	dron_do_obslugi=wybierz drona blizszego od intruza z lista_dronow_do_obslugi 
+	dt_arrive=wyznacz czas po jakim reka dotrze do dron_do_obslugi
+	nowe_zdarzenie= utworze_zdrzenie Move_rh
+
+	if(dron_do_obslugi jest dalej niz maksymalny zasieg reki)
+	{
+		pozycja_docelowa=pozycja na lini wyznaczonej przez reke i drona, w odleglosci maskymalny zasieg reki od intruza
+		sciezka=wyznacz sciezke_do pozycja_docelowa
+		nowe_zdarzenie:pozycja_docelowa=pierwsz punkt na sciezce
+	
+	}else{
+
+		pozycja_docelowa=dron_do_obslugi:pozycja
+		sciezka=wyznacz sciezke_do pozycja_docelowa
+		nowe_zdarzenie:pozycja_docelowa=pierwsz punkt na sciezce
+	
+	}
+	nowe_zdarzenie:dt_arrive=dt_arrive
+
+	set TZdarzen(nowe_zdarzenie)
+}
+
+
+
+
+planowanie zdarzenia move_Rh()
+{
+
+    lista_dronw_w_zasiegu_reki=zwróć_liste_dronów_w_zasiegu_reki()
+    if(lista_dronow_w_zasiegu_reki nie jest pusta)
+	{
+		//obiekty atakujace, bez przypisanej reki
+		lista_dronow_do_obslugi=lista pusta
+		for(dron in lista_dronow_w_zasiegu_reki)
+		{
+			if(dron jest w trakcie ataku & dron nie jest atakowany przez druga reke)
+			{
+				lista_dronow_do_obslugi.append(dron)
+			}
+			
+		}
+		if(lista_dronow_do_obslugi.size()>0)
+		{
+			wyslij_reke_do_drona(lista_dronow_do_obslugi)
+			return
+		}
+
+		//obiekty atakujace, ale druga reka go atakuje
+		lista_dronow_do_obslugi=lista pusta
+		for(dron in lista_dronow_w_zasiegu_reki)
+		{
+			if(dron jest w trakcie ataku)
+			{
+				lista_dronow_do_obslugi.append(dron)
+			}
+			
+		}
+		if(lista_dronow_do_obslugi.size()>0)
+		{
+			wyslij_reke_do_drona(lista_dronow_do_obslugi)
+			return
+		}
+
+
+		
+		//pozostałe drony
+		wyslij_reke_do_drona(lista_dronow_w_zasiegu_reki)
+		return
+		
+
+
+
+	}
+	else
+	{
+		if(reka nie jest na tier0)
+		{
+			dt_arrive=wyznacz czas po jakim reka dotrze na tier0
+			set TZdarzen(Move_rh,dt_arrive)
+
+		}
+	}
+
+
+
+
+}
+
+
+

@@ -1,0 +1,7 @@
+obsluga_move_rh()
+{
+    usun obslugiwane_zdarzenie z tablicy zdarzen
+    przesun dron na obslugiwane_zdarzenie:pozycja_docelowa
+    planowanie_zdarzenia_move_rh()
+
+}
