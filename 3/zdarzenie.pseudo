@@ -1,0 +1,33 @@
+class Zdarzenie {
+    
+    czas_wystapienia_zdarzenia
+    pozycja_docelowa
+    wlasciciel_zdarzenia
+
+    function obsluga_zdarzenia()
+
+}
+
+
+class Obiekt_ruchomy()
+{
+    x,y //pozycja obiektu
+    nastepne_zdarzenie
+    promien //ile obiekt zajmuje
+    
+    
+}
+
+class Uav:Obiekt_ruchomy
+{
+    punkty
+}
+
+class Intruz:Obiekt_ruchomy
+{
+    punkty
+    energia
+}
+
+
+
