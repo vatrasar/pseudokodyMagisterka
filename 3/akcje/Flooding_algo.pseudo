@@ -4,6 +4,7 @@ function oznacz_sasiadow(aktualna_komorka, rodzic)
 {
     lista_sasiadow=zwroc wsszytskich sasiadow aktualna_komorka
     aktualna_komorka:czas_dotarcia_uav=rodzic:czas_dotarcia_uav+1
+
     if(aktualna_komorka:czas_dotarcia_uav>max_czas_podrozy or aktualna_komorka:typ_komorki="wolna komorka")
     {
         return
