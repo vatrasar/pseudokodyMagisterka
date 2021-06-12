@@ -1,6 +1,7 @@
 planowanie_move_along_1()
 {
-    if(UAV1_curr_position=tier2 and GUI:UAV1)
+    UAV=obslugiwane_zdarzenie:wlasciciel_zdarzenia
+    if(UAV:status="tier2" and GUI:UAV1)
     {
         if(t_curr=0) //pierwsze wejscie na tier 1(nie regulowane predkoscia, poprostu sie pojawia)
         {
@@ -14,47 +15,59 @@ planowanie_move_along_1()
             is_point_correct=False
             while(is_correct){
                 xL=random(0,L_full)//losowa pozycja na tier1. L-full jest to długośc tier1
-                is_point_correct=correct(xL,UAV_mi)//sprawdza czy pozycja nie jest zajęta przez drugi uav
+                is_point_correct=correct(xL,dt_arrive)//sprawdza czy pozycja nie jest zajęta przez drugi uav
                 
 
             }
          
-            t_arrive_M1=t_curr+d_t_arrive
-            STORE(t_arrive_M1,xL,typ_zdarzenia)
-            set TZdarz(typ_zdarzenia=M_A_1,t_arrive_M1)
+    
             goto 1
 
         } else{ //powrót z tier 2(czyli też wejscie na teir 1 tylko regulowane predkoscia)
-            if(arrive=GUI:deterministic)
-            {
-                d_t_arrive=1/lambda1
+           
 
-            }
-            else{
-                d_t_arrive=-(1/lambda1)*lnz
-            }
-            xL=calculate(operation_mode)//co robi calculate
-            xL=correct()
 
-            //tu chyba powinno byc dodanie zdarzenia do tablicy zdarzeń
+            
+           while(is_correct){
+            xL=random(0,L_full)//losowa pozycja na tier1. L-full jest to długośc tier1
+            is_point_correct=correct(xL,dt_arrive)//sprawdza czy pozycja nie jest zajęta przez drugi uav
+            }
+            dt_arrive= wyznacz czas dodatarcia na tier 2 na podstawie predkosci
+
+            
         }
+        t_arrive_M1=t_curr+d_t_arrive
+        nowe_zdarzenie= utworze_zdrzenie Move_along
+        nowe_zdarzenie:pozycja_docelowa=xL
+        nowe_zdarzenie:czas_wystapienia_zdarzenia=t_arrive_M1
+        set TZdarz(nowe_zdarzenie)
+        
+
         goto 1
     }
-    if(UAV1_curr_position=tier1 and GUI:UAV1) //bieżący ruch na tier1(whcodzi )
+    if(UAV:status="tier1" and GUI:UAV1) //bieżący ruch na tier1
     {
         if(mode=RW-RA)
         {
-            if(arrive=GUI:deterministic)
-            {
-                d_t_arrive=1/lambda1
-            }
-            else{
-                d_t_arrive=-(1/lambda1)*lnz
-            }
+            is_correct=False
+            while(is_correct){
+                if(arrive=GUI:deterministic)
+                {
+                    d_t_arrive=1/lambda1
+                }
+                else{
+                    d_t_arrive=-(1/lambda1)*lnz
+                }
+    
 
-            d_XL=v_UAV*d_t_arrive
-            n_curr_position=curr_position+rand(+,-)*d_XL
-            n_curr_position=correct()
+
+                d_XL=v_UAV*d_t_arrive
+                
+                p=Uav:pozycja+rand(+,-)*d_XL
+                is_correct=correct(p)
+            }
+           
+    
             //tu była jakaś klamra z kropkami, co w niej jest
             
         }
@@ -83,32 +96,58 @@ planowanie_move_along_1()
 
 
 
-    if (tier0<UAV1_curr_position<tier1 & path_exist=True) { // powrót z ataku na bezpieczny tier 1
-        xL=search_P_A_back() //co robi ta metoda , gdzie jest pesudokod
-        xL=Correct()
-        d_t_arrive=consumed_time(SELECTED_OPTIMAL_PATH_b)*v_of_UAV //co robio te metody, SElected, i consumed_time?
-        t_arrive_M1=t_curr+dt_arrive 
-        Store(t_arrive_m1,xL,typ_zdarzenia) 
-        set TZdarzen(typ_zdarzenia=M_A_1,t_arrive_m1) //to jest wstawienie do tablicy zdarzeń czy jak?
+    is_correct=False
+    while(is_correct){
+        path_exist=search_P_A_back()
+        if(path_exist=False)
+        {
+            
+            while(is_correct)
+            {
+                temp_path_exist=Select_temp_path_back()
+                if(temp_path_exist=False)
+                {   
+                    wait=True
+                    break
+                }
+                is_correct=Correct(ostatni punkt na sciezce) 
+            }
+            
+        }
+        is_correct=Correct(ostatni punkt na sciezce)    
+    }
+    if (tier0<UAV:pozycja<tier1 & path_exist=True) { // powrót z ataku na bezpieczny tier 1
+         //co robi ta metoda , gdzie jest pesudokod
+        
+        dt_arrive= czas dotarcia_do pierwszego punktu na sciezce
+        t_arrive_M1=t_curr+d_t_arrive
+        nowe_zdarzenie=utworze_zdrzenie Move_along
+        nowe_zdarzenie:pozycja_docelowa=pierwszy punkt na sciezce
+        nowe_zdarzenie:czas_wystapienia_zdarzenia=t_arrive_M1
+        set TZdarz(nowe_zdarzenie)
+        
         goto:1    
     }
     if (tier0<UAV1_curr_position<tier1  and path_exist=False and temp_path_exist=True) { //powrót do temporary gol
-        x_temp_goal,y_temp_goal=Select_temp_path_back()
         
-        dt_arrive=dlugosc_drogi((x_gol, y_goal),(x_temp_goal,y_temp_goal))x(v_of_uav)
-        t_arrive_M1=t_curr+dt_arrive
-        Store(t_arrive_M1,x_temp_goal,y_temp_goal,typ_zdarzenia)
-        set TZdarzen(typ_zdarzenia=M_A_1,t_arrive_M1)
+        
+        dt_arrive= czas dotarcia_do pierwszego punktu na sciezce
+        t_arrive_M1=t_curr+d_t_arrive
+        nowe_zdarzenie=utworze_zdrzenie Move_along
+        nowe_zdarzenie:pozycja_docelowa=pierwszy punkt na sciezce
+        nowe_zdarzenie:czas_wystapienia_zdarzenia=t_arrive_M1
+        set TZdarz(nowe_zdarzenie)
         
     }
     if(tier0<UAV1<tier1 & wait=True)// nie moze się ruszyc
     {
-        x_temp_goal=x_temp_goal
-        y_temp_goal=y_temp_goal
-        dt_arrive=Calculate wait_time 
-        t_arrive_M1=t_curr+dt_arrive
-        Store()
-        set TZdarze(typ_zdarzenia=M_A_1,t_arrive_M1)
+        dt_arrive= czas oczekiwania
+        t_arrive_M1=t_curr+d_t_arrive
+        nowe_zdarzenie=utworze_zdrzenie Move_along
+        nowe_zdarzenie:pozycja_docelowa = UAV:pozycja
+        nowe_zdarzenie:czas_wystapienia_zdarzenia=t_arrive_M1
+        planowanie zdarzenia Help
+        set TZdarz(nowe_zdarzenie)
 
     }
     1:

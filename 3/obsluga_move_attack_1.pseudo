@@ -1,3 +1,7 @@
+
+
+//to zdarzenie jest niepotrzene
+
 obsluga_move_attack_1()
 {
     set TZdarzen(t_M_Attack,Inf)

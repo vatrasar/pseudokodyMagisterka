@@ -1,13 +1,14 @@
 search_p_attack()
 {
-    calculate expected future positions xLh, xRh,on A
+    set grid points 
+    wyznacz trajektorie rak
     if(Gui:Lh & CzyZaplanowanoZdarenie(t_Move_Lh))//Lh zaplanowanoZdarenie
     {
         if(Gui:Rh & CzyZaplanowanoZdarenie(t_Move_Rh))//sytuacja 1:11a/17
         {
-            if(Lh_curr_position=tier0)
+            if(Lh:status="tier0")
             {
-                xLh=x in L/RT przez który przechodzi prosta łącząca (y=0:tier0) z (z=UAV1_curr_position:tier1)
+                xLh=x in L/RT przez ktory przechodzi prosta laczaca (y=0:tier0) z (z=UAV1_curr_position:tier1)
                     +random(0,Lh_beating_deviation_A)
 
             }else{//Lh jest na L/RT
@@ -17,12 +18,12 @@ search_p_attack()
             goto 1
         }else //sytuacja 2:11a/17
         {
-            if(Lh_curr_position=tier0)
+            if(Lh:status="tier0")
             {
                 goto 2
             }
             2:
-            if (Rh_curr_position=tier0) {
+            if (Rh:status="tier0") {
                 
             }
             goto 1

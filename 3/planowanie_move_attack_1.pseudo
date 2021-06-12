@@ -1,6 +1,10 @@
 Move_attack_1()
 {
-    t_arrive_attack_1=curr_time+d_t_reg
-    Store(t_arrive_attack_1,x_goal,y_goal,score_goal)
-    set TZdarzen(M_Attack_1,t_arrive_attack_1)
+    p=pierwszy punkt na sciezce ataku
+    dt_arrtive=czas po jakim dron osiagnie punkt p
+    nowe_zdarzenie= utworze_zdrzenie Move_along //swiadomie daje move_along zamiast move_attack
+    nowe_zdarzenie:pozycja_docelowa=p
+    nowe_zdarzenie:czas_wystapienia_zdarzenia=dt_arrtive
+    
+    set TZdarzen(nowe_zdarzenie)
 }

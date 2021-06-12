@@ -1,8 +1,15 @@
 obsluga_move_along_1()
 {
-    set TZdarzen(M_A_1,Inf)
-    UAV1_curr_position=Store()
+    usun obslugiwane_zdarzenie z tablicy zdarzen
+    UAV=obslugiwane_zdarzenie:wlasciciel_zdarzenia
+    UAV:pozycja=obslugiwane_zdarzenie:pozycja_docelowa
+    if(Uav:status="tier2")
+    {
+        palnowanie move_along_1
+        return
+    }
     IN_BRAIN(planowanie Move_Lh, palnowanie Move_Rh, planowanie Turn A-B)
+    search_P_A_back()
     if( path_exist=True)
     {
         if(mode=RW-Ra)
@@ -21,7 +28,7 @@ obsluga_move_along_1()
                     planowanie Move_along_1 //przesuniecie do nowego punktu na 1T
                 }
             }
-            goto 1
+            return
 
         }
         if (mode=Rw-Hill-CL) {
@@ -43,7 +50,15 @@ obsluga_move_along_1()
     }else{ //nie znaleziono drogi, atak nieopłacalny
         if(mode=RW-Ra)
         {
-      
+            x=random(0,1)
+            if(x<=prob_of_return_to_tier2)
+            {
+               UAV1_curr_position=tier2
+               planowanie zdarzenia Move_along_1 //powrótw 2T->1T
+            }else{
+                planowanie Move_along_1 //przesuniecie do nowego punktu na 1T
+            }
+        }
         }
         if (mode=Rw-Hill-CL) {
             
@@ -61,13 +76,10 @@ obsluga_move_along_1()
 
         }
 
-    }//curr position!=tier1
-    if(UAV1_curr_position<tier1)
-    {
-        palnowanie move_along_1
     }
+  
 
-    1:
+    
 
 
 }
