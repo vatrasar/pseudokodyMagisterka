@@ -1,0 +1,6 @@
+planowanie help(){
+    //dla drugiego uav
+    search_P_attack(is_help=True)
+    planowanie move_attack_1
+
+}

@@ -68,10 +68,10 @@ planowanie_move_along_1()
             }
            
     
-            //tu była jakaś klamra z kropkami, co w niej jest
+     
             
         }
-        if(mode=RW-HILL-CL)//co tu się dzieje
+        if(mode=RW-HILL-CL)
         {
             goto 1
         

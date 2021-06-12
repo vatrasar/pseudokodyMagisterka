@@ -52,7 +52,16 @@ main{
         zapisz statystyki
         STOP
     }
+    
+    aktualizacja pozycji wszystkich elementow systemu
+
     aktualne_zdarzenie.obsluga_zdarzenia()
+    kontrola czy jest jakas kolizja
+    if(jest kolizja)
+    {
+        koniec symulacji
+    }
+    
     goto 1
     
 

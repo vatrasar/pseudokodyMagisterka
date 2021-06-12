@@ -9,31 +9,33 @@ class Zdarzenie {
 }
 
 
-class Obiekt_ruchomy()
-{
+
+
+class Uav
+{   
     pozycja //pozycja obiektu
     nastepne_zdarzenie
-    promien //ile obiekt zajmuje
-    
-    
-}
-
-class Uav:Obiekt_ruchomy
-{
+    promien //ile obiekt zajmuje miejsca
     punkty
     status="tier2"//inne dostepne statusy to  tier1, attack
     function planowanie_move_along()
 }
 
-class Intruz:Obiekt_ruchomy
+class Intruz
 {
+    pozycja //pozycja obiektu
+    nastepne_zdarzenie
+    promien //ile obiekt zajmuje miejsca
     punkty
     energia
 }
 
 
-class Reka:Obiekt_ruchomy
+class Reka
 {
+    pozycja //pozycja obiektu
+    nastepne_zdarzenie
+    promien //ile obiekt zajmuje miejsca
     punkty
     status="tier0"//inne dostepne statusy to tier0, defense
 }

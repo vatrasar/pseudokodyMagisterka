@@ -34,11 +34,11 @@ IN_BRAIN(){
             {
                 if(dt_window_beat_score_B>= beat_the_score)
                 {
-                    set TZdarzen(Move_Lh,Inf)
+                    usuniecie Move_Lh z tablicy zdarzen
                     Lh_curr_postion=tier0
 
-                    set TZdarzen(Move_Rh,Inf)
-                    Rh_curr_position=tier0
+                    set TZdarzen(Move_Lh)
+                    Rh:status="tier0"
 
                     planowanie zdarzenia Turn A-B
                     goto 1
