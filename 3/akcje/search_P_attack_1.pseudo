@@ -43,7 +43,7 @@ search_p_attack()
     set gred points
     Flooding Algo(starting_point(xl),set_of_paths(path:ordered_set_points,num_of_path_points,found_goals(x_goal,y_goal),time_requested,score))
     Select_paths with time_requested<=0.5*Min(dt_Lh,dt_Rh)
-    Select_optimal_path(path:ordered_set_points,(x_goal,y_goal),time_requested,score)
+    Select_optimal_path(path:ordered_set_points,(x_goal,y_goal),time_requested,score,is_help)
     if(is_help=True)
     {
         path_exists=True

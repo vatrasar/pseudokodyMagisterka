@@ -9,6 +9,15 @@ class Zdarzenie {
 }
 
 
+class Komorka_fluid
+{
+    czas_dotarcia_uav
+    rodzic
+    punkty
+    komorka_bezpieczna
+    typ_komorki
+}
+
 
 
 class Uav

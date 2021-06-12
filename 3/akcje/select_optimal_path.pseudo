@@ -1,0 +1,21 @@
+select_optimal_path()
+{
+    if(istnieje komorka punktowana wiecej niz 0)
+    {
+        aktualna_komorka=w lista_komorek_fluid znajdz komorke najwyzej punktowana
+       
+    }
+    else if(is_help=True)
+    {
+        aktualna_komorka=znajdz komorke najblizej intruza
+    }
+
+    sciezka=lista_pusta
+    sciezka.append(aktualna_komorka)
+    while(aktualna_komorka:rodzic istnieje)
+    {
+        aktualna_komorka=aktualna_komorka:rodzic
+        sciezka.append(aktualna_komorka)
+
+    }
+}
