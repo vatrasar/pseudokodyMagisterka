@@ -27,6 +27,6 @@ Flooding_algo()
     aktualna_komorka=komorka w miejscu drona
     aktualna_komorka:czas_dotarcia_uav=0
     oznacz_sasiadow(aktualna_komorka)
-    
-    
+    lista_odwiedzonych_komorek=wybierz wszystkie odwiedzone komorki
+    return lista_odwiedzonych_komorek   
 }

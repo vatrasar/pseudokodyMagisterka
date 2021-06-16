@@ -47,6 +47,7 @@ main{
     1:   //etykieta goto
     aktualne_zdarzenie=znajdz najblizsze zdarzenie Tab_zadarzen
     t_curr=aktualne_zdarzenie:czas_wystapienia_zdarzenia
+    aktualizacja_statystyk
     if(t_curr>T)
     {
         zapisz statystyki
@@ -57,7 +58,9 @@ main{
 
     aktualne_zdarzenie.obsluga_zdarzenia()
     kontrola czy jest jakas kolizja
-    if(jest kolizja)
+    aktualizacja energii intruza
+    aktualizacja punktacji
+    if(jest kolizja or osiagnieto_limit_punktowy_intruza)
     {
         koniec symulacji
     }
